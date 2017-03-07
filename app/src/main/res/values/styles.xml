@@ -1,10 +1,14 @@
 <resources>
 
     <!-- Base application theme. 修改了状态栏的颜色、隐藏了标题栏-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/hotpink</item>
         <item name="colorPrimaryDark">@color/hotpink</item>
         <item name="colorAccent">@color/hotpink</item>
     </style>
+
+    <style name="AppTheme.Base.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.Base.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
