@@ -6,7 +6,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
 import com.virgil.frameworkstart.base.BaseAppCompatActivity;
+import com.virgil.frameworkstart.user.UserBean;
+
+import java.util.ArrayList;
 
 public class SecondActivity extends BaseAppCompatActivity {
 
@@ -19,10 +23,12 @@ public class SecondActivity extends BaseAppCompatActivity {
     protected void init() {
         getToolbarTitle().setText("登录");
         getSubTitle().setText("123");
+
     }
 
     @Override
     protected boolean isShowBacking() {
         return true;
     }
+
 }
