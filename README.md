@@ -55,3 +55,108 @@ BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.i
         <item name="colorAccent">@color/hotpink</item>
     </style>
 ```
+### 三、Logger日志的使用
+### 1.Gradle:
+```
+compile 'com.orhanobut:logger:1.15'
+```
+### 2.使用方法：
+#### 在Application中初始化tag：Logger.init("tagName");
+#### 也可以不写，默认为“PRETTYLOGGER”
+#### 简单使用：
+```
+String userName = "virgil";
+Logger.i(userName);
+```
+#### 给当前打印的换一个单独的tag名
+```
+Logger.t("App").i(userName);
+```
+#### 也可以打印非字符串类型的数据
+```
+Logger.i("大家好，我叫%s，今年%d，很高兴认识大家！", "virgil", 18);
+```
+#### Logger还可以打印很多形式的数据，极大的方便了我们的开发
+```
+Logger.d("hello");
+Logger.e("hello");
+Logger.w("hello");
+Logger.v("hello");
+Logger.wtf("hello");
+// 打印json格式
+String json = createJson().toString();
+Logger.json(json);
+// 打印xml格式
+Logger.xml(XML_CONTENT);
+// 打印自定义级别、tag、信息等格式日志
+Logger.log(DEBUG, "tag", "message", throwable);
+
+// 创建json数据
+private JSONObject createJson() {    
+    try {        
+        JSONObject person = new JSONObject(); 
+        person.put("phone", "12315");
+        JSONObject address = new JSONObject();       
+        address.put("country", "china");
+        address.put("province", "fujian");       
+        address.put("city", "xiamen");   
+        person.put("address", address);
+        person.put("married", true);        
+        return person;    
+    } catch (JSONException e) {        
+        Logger.e(e, "create json error occured");    
+    }    
+    return null;
+}
+```
+#### Logger库还针对显示可以自己自定义
+```
+Settings setting = Logger.init("MainActivity");
+setting.logLevel(LogLevel.FULL) //  显示全部日志，LogLevel.NONE不显示日志，默认是Full   
+     .methodCount(5)         //  方法栈打印的个数，默认是2        
+     .methodOffset(0)        //  设置调用堆栈的函数偏移值，0的话则从打印该Log的函数开始输出堆栈信息，默认是0
+     .hideThreadInfo();      //  隐藏线程信息
+     .logAdapter(new AndroidLogAdapter());// 自定义一个打印适配器，这里适配了Android的Log打印，你也可以自己实现LogAdapter接口来做一些特殊需求的日志打印适配
+```
+##### 线程显示隐藏了，方法栈显示的偏移量为0，表示从打印的Log的地方开始算方法数的5个堆栈内的方法都打印出来。
+
+#### 打印数组、List、map等对象数据
+```
+String[] names = {"Jerry", "Emily", "小五", "hongyang", "七猫"};
+Logger.d(names);  // 打印字符数组
+List<User> users = new ArrayList<>();
+for (int i = 0; i < names.length; i++) {    
+    User user = new User(names[i], 10 + i);
+    users.add(user);
+}
+Logger.d(users);  // 打印List
+
+class User {    
+    private String name;    
+    private int age;    
+    public User(String name, int age) {        
+        this.name = name;        
+        this.age = age;    
+    }    
+    public String getName() {        
+        return name;    
+    }    
+    public void setName(String name) {        
+        this.name = name;    
+    }    
+    public int getAge() {        
+        return age;    
+    }    
+    public void setAge(int age) {        
+        this.age = age;    
+    }    
+    // 要覆写对象的toString方法才可以打印出完整的日志信息
+    @Override    
+    public String toString() {        
+      return "User{" +                
+          "name='" + name + '\'' +                
+          ", age=" + age +                
+          '}';   
+    }
+  }
+```
