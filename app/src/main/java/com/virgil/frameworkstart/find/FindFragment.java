@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.virgil.frameworkstart.R;
+import timber.log.Timber;
 
 
 public class FindFragment extends Fragment {
@@ -17,6 +18,7 @@ public class FindFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Timber.d("test Timber %d",10);
     }
 
     @Override
