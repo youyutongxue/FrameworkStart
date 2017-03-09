@@ -1,42 +1,20 @@
 package com.virgil.frameworkstart.home;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
+import com.virgil.baselib.activity.BaseFragment;
 import com.virgil.frameworkstart.R;
-import com.virgil.frameworkstart.SecondActivity;
+import com.virgil.frameworkstart.databinding.FragmentHomeBinding;
 
-public class HomeFragment extends Fragment {
-    private Button mBtn_click;
+public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
+    private HomeViewModel mHomeViewModel = null;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.fragment_home;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        mBtn_click = (Button) view.findViewById(R.id.btn_click);
-        return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mBtn_click.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().startActivity(new Intent().setClass(getContext(), SecondActivity.class));
-            }
-        });
+    protected void setViewModel() {
+        mHomeViewModel = new HomeViewModel(getContext());
+        mBinding.setViewmodel(mHomeViewModel);
     }
 }

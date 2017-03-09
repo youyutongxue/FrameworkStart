@@ -1,10 +1,9 @@
 package com.virgil.frameworkstart.base;
 
-import android.app.Application;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.orhanobut.logger.Logger;
+import com.virgil.baselib.activity.App;
 import com.virgil.frameworkstart.BuildConfig;
 
 import java.io.BufferedWriter;
@@ -18,7 +17,7 @@ import timber.log.Timber;
  * Created by 陈有余 on 2017/3/8 10:43.
  */
 
-public class APP extends Application {
+public class BaseAPP extends App {
 
     @Override
     public void onCreate() {

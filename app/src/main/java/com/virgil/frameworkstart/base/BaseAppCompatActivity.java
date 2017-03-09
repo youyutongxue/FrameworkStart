@@ -1,5 +1,6 @@
 package com.virgil.frameworkstart.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -140,5 +141,71 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.v(TAG, "onDestroy...");
+    }
+
+    /**
+     * 界面跳转
+     *
+     * @param cls 目标Activity
+     */
+    protected void readyGo(Class<?> cls) {
+        readyGo(cls, null);
+    }
+
+    /**
+     * 界面跳转，带参数
+     *
+     * @param cls  目标Activity
+     * @param bundle 数据
+     */
+    protected void readyGo(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(this, cls);
+        if (null != bundle)
+            intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    /**
+     * 跳转界面并关闭当前界面
+     *
+     * @param cls 目标Activity
+     */
+    protected void readyGoThenKill(Class<?> cls) {
+        readyGoThenKill(cls, null);
+    }
+
+    /**
+     * @param cls  目标Activity
+     * @param bundle 数据
+     */
+    protected void readyGoThenKill(Class<?> cls, Bundle bundle) {
+        readyGo(cls, bundle);
+        finish();
+    }
+
+    /**
+     * startActivityForResult
+     *
+     * @param cls       目标Activity
+     * @param requestCode 发送判断值
+     */
+    protected void readyGoForResult(Class<?> cls, int requestCode) {
+        Intent intent = new Intent(this, cls);
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * startActivityForResult with bundle
+     *
+     * @param cls       目标Activity
+     * @param requestCode 发送判断值
+     * @param bundle      数据
+     */
+    protected void readyGoForResult(Class<?> cls, int requestCode, Bundle bundle) {
+        Intent intent = new Intent(this, cls);
+        if (null != bundle) {
+            intent.putExtras(bundle);
+        }
+        startActivityForResult(intent, requestCode);
     }
 }

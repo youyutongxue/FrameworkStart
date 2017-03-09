@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.virgil.baselib.R" />
+
+        <variable
+            name="titlebar"
+            type="com.virgil.baselib.activity.TitleBarViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/translucence"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/dimen_15"
+                android:paddingLeft="@dimen/dimen_12"
+                android:paddingRight="@dimen/dimen_12"
+                android:paddingTop="@dimen/dimen_15"
+                android:background="@drawable/selector_back_white_gray"
+                android:src="@mipmap/icon_back"
+                android:visibility="@{titlebar.showLeft==null?View.GONE:titlebar.showLeft?View.VISIBLE:View.GONE}"
+                app:clickCommand="@{titlebar.backCommand}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/dimen_15"
+                android:text="@{titlebar.title}"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/text_size_16"
+                tools:text="标题" />
+
+            <TextView
+                android:id="@+id/tv_right2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/dimen_15"
+                android:paddingLeft="@dimen/dimen_12"
+                android:paddingRight="@dimen/dimen_12"
+                android:paddingTop="@dimen/dimen_15"
+                android:background="@drawable/selector_back_white_gray"
+                app:clickCommand="@{titlebar.rightCommand2}"
+                app:drawableLeft="@{titlebar.resId2==null?0:titlebar.resId2}" />
+
+            <TextView
+                android:id="@+id/tv_right1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_right2"
+                android:paddingBottom="@dimen/dimen_15"
+                android:paddingLeft="@dimen/dimen_12"
+                android:paddingTop="@dimen/dimen_15"
+                android:paddingRight="@dimen/dimen_12"
+                android:background="@drawable/selector_back_white_gray"
+                app:clickCommand="@{titlebar.rightCommand1}"
+                app:drawableLeft="@{titlebar.resId1==null?0:titlebar.resId1}" />
+        </RelativeLayout>
+
+        <View style="@style/line_cell_light_h" />
+    </LinearLayout>
+</layout>
