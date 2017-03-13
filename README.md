@@ -161,6 +161,29 @@ class User {
   }
 ```
 ### 四、BaseActivity和BaseFragment用法
+#### （一）BaseActivity封装内容
+#### 1.getLayoutId 
+####    该抽象方法就是onCreate中需要的layoutID
+#### 2.setViewModel
+####    绑定ViewModel
+#### 3.init
+####    初始化view及data
+#### 4.showLoading
+####    显示加载dialog
+#### 5.hideLoading
+####    隐藏加载dialog
+#### 6.Toast（一共自定义了6种样式的Toast）
+####    1）showSuccessToast成功样式
+####    2）showErrorToast错误样式
+####    3）showInfoToast提示信息样式
+####    4）showWarningToast警告样式
+####    5）showNormalToast系统普通样式
+####    6）showNormalIconToast带图标的系统普通样式
+
+#### （二）BaseFragment封装内容
+#### 同BaseActivity
+
+#### （三）代码演示
 ```
 public class OrderActivity extends BaseActivity<ActivityOrderBinding> {
     private OrderViewModel mOrderViewModel = null;
@@ -274,4 +297,4 @@ public class OrderActivity extends BaseActivity<ActivityOrderBinding> {
 }
 ```
 #### 3.效果图
-![](https://github.com/youyutongxue/Toasty/blob/master/app/src/main/java/com/virgil/toasty/art/titlebar.jpeg)
+![](https://github.com/youyutongxue/FrameworkStart/blob/master/app/src/main/java/com/virgil/frameworkstart/art/titlebar.jpeg)
