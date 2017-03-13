@@ -160,3 +160,47 @@ class User {
     }
   }
 ```
+### 四、BaseActivity和BaseFragment用法
+```
+public class OrderActivity extends BaseActivity<ActivityOrderBinding> {
+    private OrderViewModel mOrderViewModel = null;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_order;
+    }
+
+    @Override
+    protected void setViewModel() {
+        mOrderViewModel = new OrderViewModel();
+        mBinding.setViewmodel(mOrderViewModel);
+    }
+
+    @Override
+    protected void init() {
+        mOrderViewModel.loadData();
+    }
+}
+```
+
+```
+public class UserFragment extends BaseFragment<FragmentUserBinding> {
+    private UserViewModel mUserViewModel = null;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_user;
+    }
+
+    @Override
+    protected void setViewModel() {
+        mUserViewModel = new UserViewModel();
+        mBinding.setViewModel(mUserViewModel);
+    }
+
+    @Override
+    protected void init() {
+        mUserViewModel.loadData();
+    }
+}
+```
