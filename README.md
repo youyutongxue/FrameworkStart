@@ -204,3 +204,73 @@ public class UserFragment extends BaseFragment<FragmentUserBinding> {
     }
 }
 ```
+### 五、title bar用法
+#### 1.xml文件
+```
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.virgil.frameworkstart.home.order.viewmodel.OrderViewModel"/>
+        <variable name="titlebar" type="com.virgil.baselib.activity.TitleBarViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.virgil.frameworkstart.home.order.view.OrderActivity">
+
+        <include layout="@layout/layout_title_bar_normal"
+            bind:titlebar="@{titlebar}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:text="@{viewmodel.name}"
+            tools:text="name"/>
+
+    </LinearLayout>
+</layout>
+```
+
+#### 2.Activity
+```
+public class OrderActivity extends BaseActivity<ActivityOrderBinding> {
+    private OrderViewModel mOrderViewModel = null;
+    private TitleBarViewModel mTitleBarViewModel = null;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_order;
+    }
+
+    @Override
+    protected void setViewModel() {
+        mOrderViewModel = new OrderViewModel();
+        mTitleBarViewModel = new TitleBarViewModel("订单", true);
+        mBinding.setViewmodel(mOrderViewModel);
+        mTitleBarViewModel.setRight(R.mipmap.collect, new ReplyCommand(() -> {
+            showSuccessToast("收藏成功");
+        }));
+        mTitleBarViewModel.setRight2(R.mipmap.icon_share, new ReplyCommand(() -> {
+            showSuccessToast("分享成功");
+        }));
+        mBinding.setTitlebar(mTitleBarViewModel);
+    }
+
+    @Override
+    protected void init() {
+        mOrderViewModel.loadData();
+    }
+}
+```
+#### 3.效果图
