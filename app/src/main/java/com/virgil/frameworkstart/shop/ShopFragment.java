@@ -1,28 +1,25 @@
 package com.virgil.frameworkstart.shop;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.virgil.baselib.activity.BaseFragment;
 import com.virgil.frameworkstart.R;
+import com.virgil.frameworkstart.databinding.FragmentShopBinding;
 
-public class ShopFragment extends Fragment {
+public class ShopFragment extends BaseFragment<FragmentShopBinding> {
+    private ShopViewModel mShopViewModel = null;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.fragment_shop;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shop, container, false);
+    protected void setViewModel() {
+        mShopViewModel = new ShopViewModel();
+        mBinding.setViewModel(mShopViewModel);
     }
 
-
+    @Override
+    protected void init() {
+        mShopViewModel.loadData();
+    }
 }

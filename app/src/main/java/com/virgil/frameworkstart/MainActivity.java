@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         //设置标签选择样式
         //bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
-        //bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         //bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .addItem(new BottomNavigationItem(R.drawable.ic_music_note_white_24dp, "发现"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_tv_white_24dp, "门店"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_videogame_asset_white_24dp, "我的"))
-                .setActiveColor(R.color.hotpink)//设置选中标签的颜色(一般设置为app的主色)
+                .setActiveColor(R.color.app_theme)//设置选中标签的颜色(一般设置为app的主色)
                 .initialise();
 
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {

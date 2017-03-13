@@ -1,5 +1,6 @@
 package com.virgil.baselib.activity;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.graphics.drawable.Drawable;
@@ -53,5 +54,37 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
      * 初始化view及data
      */
     protected void init() {
+    }
+
+    //自定义样式的Toast显示
+    //成功样式
+    protected void showSuccessToast(Context context, String content) {
+        ToastCustomUtils.showSuccessToast(context, content);
+    }
+
+    //错误样式
+    protected void showErrorToast(Context context, String content) {
+        ToastCustomUtils.showErrorToast(context, content);
+    }
+
+    //提示信息样式
+    protected void showInfoToast(Context context, String content) {
+        ToastCustomUtils.showInfoToast(context, content);
+    }
+
+    //警告样式
+    protected void showWarningToast(Context context, String content) {
+        ToastCustomUtils.showWarningToast(context, content);
+    }
+
+    //系统普通样式
+    protected void showNormalToast(Context context, String content) {
+        ToastCustomUtils.showNormalToast(context, content);
+    }
+
+    //带图标的系统普通样式
+    protected void showNormalIconToast(Context context, String content) {
+        Drawable icon = getResources().getDrawable(R.drawable.ic_pets_white_48dp);
+        ToastCustomUtils.showNormalIconToast(context, content, icon);
     }
 }

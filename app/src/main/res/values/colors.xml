@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="app_bg">#ff5e00</color>
+    <color name="app_theme">#ff5e06</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="white">#ffffff</color><!--白色 -->
     <color name="ivory">#fffff0</color><!--象牙色 -->

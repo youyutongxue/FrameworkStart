@@ -1,15 +1,9 @@
 package com.virgil.frameworkstart.mall;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.orhanobut.logger.Logger;
+import com.virgil.baselib.activity.BaseFragment;
 import com.virgil.frameworkstart.R;
+import com.virgil.frameworkstart.databinding.FragmentMallBinding;
 import com.virgil.frameworkstart.user.UserBean;
 
 import org.json.JSONException;
@@ -18,11 +12,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MallFragment extends Fragment {
+public class MallFragment extends BaseFragment<FragmentMallBinding> {
+    private MallViewModel mMallViewModel = null;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.fragment_mall;
+    }
+
+    @Override
+    protected void setViewModel() {
+        mMallViewModel = new MallViewModel();
+        mBinding.setViewModel(mMallViewModel);
+    }
+
+    @Override
+    protected void init() {
+        mMallViewModel.loadData();
         loggerUse();
         LoggerOther();
     }
@@ -79,13 +85,6 @@ public class MallFragment extends Fragment {
             Logger.e(e, "create json error occured");
         }
         return null;
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mall, container, false);
     }
 
 }

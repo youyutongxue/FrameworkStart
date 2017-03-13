@@ -8,21 +8,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.virgil.baselib.activity.BaseFragment;
 import com.virgil.frameworkstart.R;
+import com.virgil.frameworkstart.databinding.FragmentUserBinding;
 
 
-public class UserFragment extends Fragment {
-
+public class UserFragment extends BaseFragment<FragmentUserBinding> {
+    private UserViewModel mUserViewModel = null;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.fragment_user;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false);
+    protected void setViewModel() {
+        mUserViewModel = new UserViewModel();
+        mBinding.setViewModel(mUserViewModel);
+    }
+
+    @Override
+    protected void init() {
+        mUserViewModel.loadData();
     }
 }

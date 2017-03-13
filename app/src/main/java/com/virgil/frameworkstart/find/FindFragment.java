@@ -8,25 +8,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.virgil.baselib.activity.BaseFragment;
 import com.virgil.frameworkstart.R;
+import com.virgil.frameworkstart.databinding.FragmentFindBinding;
+
 import timber.log.Timber;
 
 
-public class FindFragment extends Fragment {
-
+public class FindFragment extends BaseFragment<FragmentFindBinding> {
+    private FindViewModel mFindViewModel = null;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Timber.d("test Timber %d",10);
+    protected int getLayoutId() {
+        return R.layout.fragment_find;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_find, container, false);
+    protected void setViewModel() {
+        mFindViewModel = new FindViewModel();
+        mBinding.setViewModel(mFindViewModel);
     }
 
-
+    @Override
+    protected void init() {
+        mFindViewModel.loadData();
+        //Timber用法
+        Timber.d("test Timber %d", 10);
+    }
 }
