@@ -39,7 +39,7 @@ dependencies {
     /*log日志*/
     compile 'com.orhanobut:logger:1.15'
     compile 'com.jakewharton.timber:timber:4.3.1'
-
     compile project(':baselib')
     compile project(':databinding')
+    compile project(':loadinglib')
 }

@@ -1,10 +1,8 @@
 package com.virgil.frameworkstart.home.order.view;
 
 import com.databinding.command.ReplyCommand;
-import com.orhanobut.logger.Logger;
 import com.virgil.baselib.activity.BaseActivity;
 import com.virgil.baselib.activity.TitleBarViewModel;
-import com.virgil.baselib.util.ToastCustomUtils;
 import com.virgil.frameworkstart.R;
 import com.virgil.frameworkstart.databinding.ActivityOrderBinding;
 import com.virgil.frameworkstart.home.order.viewmodel.OrderViewModel;

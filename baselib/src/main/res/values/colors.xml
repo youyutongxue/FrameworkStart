@@ -159,4 +159,6 @@
     <color name="line_border">#efefef</color><!--边框颜色-->
     <color name="appbar_line">#e5e5e5</color><!--头部导航描边-->
     <color name="div_lines_normal">#e5e5e5</color>
+
+    <color name="background">#f2f2f2</color>
 </resources>

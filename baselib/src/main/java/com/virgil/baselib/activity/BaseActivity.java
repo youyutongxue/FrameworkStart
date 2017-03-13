@@ -1,6 +1,5 @@
 package com.virgil.baselib.activity;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.graphics.drawable.Drawable;
@@ -10,7 +9,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import com.virgil.baselib.R;
-import com.virgil.baselib.util.ToastCustomUtils;
+import com.virgil.baselib.utils.ToastCustomUtils;
 
 public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {
     private static final String TAG = "BaseActivity";

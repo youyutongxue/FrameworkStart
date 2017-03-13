@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':toasty', ':databinding'
+include ':app', ':baselib', ':toasty', ':databinding', ':loadinglib'

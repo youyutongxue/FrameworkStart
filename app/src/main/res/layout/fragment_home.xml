@@ -9,26 +9,32 @@
             type="com.virgil.frameworkstart.home.HomeViewModel"/>
     </data>
 
-    <FrameLayout
+    <com.weavey.loading.lib.LoadingLayout
+        android:id="@+id/loading"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.virgil.frameworkstart.home.HomeFragment">
+        android:layout_height="match_parent">
 
-        <TextView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/name"
-            android:textSize="30sp"/>
+            tools:context="com.virgil.frameworkstart.home.HomeFragment">
 
-        <Button
-            android:id="@+id/btn_click"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="click"
-            android:layout_marginTop="100dp"
-            android:layout_gravity="center"
-            app:clickCommand="@{viewmodel.clickCommand}"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/name"
+                android:textSize="30sp"/>
 
-    </FrameLayout>
+            <Button
+                android:id="@+id/btn_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:text="click"
+                app:clickCommand="@{viewmodel.clickCommand}"/>
+
+        </FrameLayout>
+    </com.weavey.loading.lib.LoadingLayout>
 </layout>

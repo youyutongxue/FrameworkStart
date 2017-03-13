@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.orhanobut.logger.Logger;
 import com.virgil.baselib.activity.App;
 import com.virgil.frameworkstart.BuildConfig;
+import com.virgil.frameworkstart.R;
+import com.weavey.loading.lib.LoadingLayout;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,7 +19,7 @@ import timber.log.Timber;
  * Created by 陈有余 on 2017/3/8 10:43.
  */
 
-public class BaseAPP extends App {
+public class BaseApp extends App {
 
     @Override
     public void onCreate() {
@@ -31,6 +33,23 @@ public class BaseAPP extends App {
             Timber.plant(new FileLoggingTree());
         }
         Timber.tag("virgil_timber");
+
+        //loading布局相关参数初始化
+        LoadingLayout.getConfig()
+                .setErrorText("出错啦~请稍后重试！")
+                .setEmptyText("抱歉，暂无数据")
+                .setNoNetworkText("无网络连接，请检查您的网络···")
+                .setErrorImage(R.mipmap.define_error)
+                .setEmptyImage(R.mipmap.define_empty)
+                .setNoNetworkImage(R.mipmap.define_nonetwork)
+                .setAllTipTextColor(R.color.gray)
+                .setAllTipTextSize(14)
+                .setReloadButtonText("点我重试哦")
+                .setReloadButtonTextSize(14)
+                .setReloadButtonTextColor(R.color.gray)
+                .setReloadButtonWidthAndHeight(150,40)
+                .setAllPageBackgroundColor(R.color.background)
+                .setLoadingPageLayout(R.layout.define_loading_page);
     }
 
     private class FileLoggingTree extends Timber.Tree {

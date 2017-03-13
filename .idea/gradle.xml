@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselib" />
             <option value="$PROJECT_DIR$/databinding" />
+            <option value="$PROJECT_DIR$/loadinglib" />
             <option value="$PROJECT_DIR$/toasty" />
           </set>
         </option>

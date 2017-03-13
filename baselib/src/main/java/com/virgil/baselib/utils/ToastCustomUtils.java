@@ -1,4 +1,4 @@
-package com.virgil.baselib.util;
+package com.virgil.baselib.utils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

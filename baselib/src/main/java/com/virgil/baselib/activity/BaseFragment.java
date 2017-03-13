@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.virgil.baselib.R;
-import com.virgil.baselib.util.ToastCustomUtils;
+import com.virgil.baselib.utils.ToastCustomUtils;
 
 /**
  * Created by 陈有余 on 2017/3/9 15:39.
