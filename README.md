@@ -274,3 +274,4 @@ public class OrderActivity extends BaseActivity<ActivityOrderBinding> {
 }
 ```
 #### 3.效果图
+![](https://github.com/youyutongxue/Toasty/blob/master/app/src/main/java/com/virgil/toasty/art/titlebar.jpeg)
