@@ -298,3 +298,102 @@ public class OrderActivity extends BaseActivity<ActivityOrderBinding> {
 ```
 #### 3.效果图
 ![](https://github.com/youyutongxue/FrameworkStart/blob/master/app/src/main/java/com/virgil/frameworkstart/art/titlebar.jpeg)
+
+### 六、loadinglib用法
+#### 1.在Application中初始化
+```
+LoadingLayout.getConfig()
+                .setErrorText("出错啦~请稍后重试！")
+                .setEmptyText("抱歉，暂无数据")
+                .setNoNetworkText("无网络连接，请检查您的网络···")
+                .setErrorImage(R.mipmap.define_error)
+                .setEmptyImage(R.mipmap.define_empty)
+                .setNoNetworkImage(R.mipmap.define_nonetwork)
+                .setAllTipTextColor(R.color.gray)
+                .setAllTipTextSize(14)
+                .setReloadButtonText("点我重试哦")
+                .setReloadButtonTextSize(14)
+                .setReloadButtonTextColor(R.color.gray)
+                .setReloadButtonWidthAndHeight(150,40)
+                .setAllPageBackgroundColor(R.color.background)
+                .setLoadingPageLayout(R.layout.define_loading_page);//自定义的loading布局
+```
+#### 2.xml布局
+```
+<com.weavey.loading.lib.LoadingLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.weavey.loadinglayout.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="hello"
+        android:visibility="visible"/>
+
+</com.weavey.loading.lib.LoadingLayout>
+```
+#### 3.Activity代码
+```
+public class MainActivity extends AppCompatActivity {
+
+    private LoadingLayout loading;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        loading = (LoadingLayout) findViewById(R.id.loading);
+
+        loading.setStatus(LoadingLayout.Loading);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.setStatus(LoadingLayout.Empty);
+            }
+        },2000);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.setStatus(LoadingLayout.Error);
+            }
+        },4000);
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.setStatus(LoadingLayout.No_Network);
+            }
+        },6000);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.setStatus(LoadingLayout.Success);
+            }
+        },8000);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.setStatus(LoadingLayout.Loading);
+            }
+        },10000);
+
+        loading.setOnReloadListener(new LoadingLayout.OnReloadListener() {
+            @Override
+            public void onReload(View v) {
+                Toast.makeText(MainActivity.this, "重试", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+```
